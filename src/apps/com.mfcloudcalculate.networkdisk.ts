@@ -18,7 +18,7 @@ export default defineGkdApp({
             'com.adgain.sdk.base.activity.AdActivity',
           ],
           matches:
-            '[vid="tv_ad_free_close" || vid="tv_ad_free_colse" || vid="adgain_interstitial_skip_ll"][visibleToUser=true]',
+            '[vid="tv_ad_free_close" || vid="tv_ad_free_colse" || vid="adgain_interstitial_skip_ll" || vid="adgain_interstitial_close_ll"][visibleToUser=true]',
           exampleUrls:
             'https://m.gkd.li/57941037/4cafd5fd-b5ed-4df1-b9f2-f443f53a7166',
           snapshotUrls: [
@@ -26,6 +26,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/14696860',
             'https://i.gkd.li/i/18121213',
             'https://i.gkd.li/i/24675097',
+            'https://i.gkd.li/i/24927790',
           ],
         },
         {
@@ -130,15 +131,15 @@ export default defineGkdApp({
         {
           key: 11,
           fastQuery: true,
-          position: {
-            left: 'width * 0.9636',
-            top: 'height * 0.5',
-          },
+          action: 'back',
           activityIds: '.MainActivity',
           matches:
-            '[desc="开通前请阅读"] -n @ImageView[childCount=0] < View < View < View < View < FrameLayout < [id="android:id/content"]',
+            '[desc="开通前请阅读"] -n @ImageView[childCount=0][width>800] <(1,2) View < View < View < View < FrameLayout < [id="android:id/content"]',
           exampleUrls: 'https://e.gkd.li/ee504d60-ca93-40de-bb0f-292ef1df8c70',
-          snapshotUrls: 'https://i.gkd.li/i/24119773',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24119773',
+            'https://i.gkd.li/i/25128678',
+          ],
         },
         {
           key: 12,
@@ -165,6 +166,26 @@ export default defineGkdApp({
           matches:
             '@Image[childCount=0][width<60 && height<60] < View[childCount=1] < View[childCount=1] - View[childCount=1] > [text="反馈"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/24473530',
+        },
+        {
+          key: 15,
+          activityIds: 'com.byazt.sr.Stub_Standard_Portrait_Activity',
+          matches: 'View[childCount=5] > [text^="svg"][index=0][childCount=0]',
+          snapshotUrls: 'https://i.gkd.li/i/25128382',
+        },
+        {
+          key: 16,
+          activityIds: '.MainActivity',
+          matches:
+            'View[childCount=0] < FrameLayout[childCount=2] - LinearLayout >4 [text$="第三方应用"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/25128313',
+        },
+        {
+          key: 17,
+          activityIds:
+            'com.sigmob.sdk.base.common.PortraitTransparentAdActivity',
+          matches: '[id="ad_area"] > [id="close_btn"]',
+          snapshotUrls: 'https://i.gkd.li/i/25128394',
         },
       ],
     },
@@ -240,9 +261,13 @@ export default defineGkdApp({
           key: 1,
           activityIds: '.MainActivity',
           matches:
-            '@Image[childCount=0][width<60 && height<60][visibleToUser=true] < View[childCount=1] -2 View >3 [text="广告"]',
+            '@Image[childCount=0][width<60 && height<60][visibleToUser=true] < View[childCount=1] -(1,2,3) View >(2,3) [text="广告"]',
           exampleUrls: 'https://e.gkd.li/e6fc2756-928f-48d4-af51-3b6ce9aa557b',
-          snapshotUrls: 'https://i.gkd.li/i/24404390',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24404390',
+            'https://i.gkd.li/i/24979310',
+            'https://i.gkd.li/i/25128397',
+          ],
         },
         {
           key: 2,
@@ -262,7 +287,35 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/24589944',
         },
         {
-          preKeys: [0, 1, 2, 3],
+          key: 4,
+          fastQuery: true,
+          activityIds: '.MainActivity',
+          matches:
+            '@ImageView[clickable=true][id=null][childCount=0] - [text="投诉"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/24979308',
+        },
+        {
+          key: 5,
+          fastQuery: true,
+          activityIds: '.MainActivity',
+          matches:
+            '[vid="ptgImgClose" || vid="sdm_myoffer_banner_close" || vid="ksad_banner_item_close"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24979282',
+            'https://i.gkd.li/i/25128395',
+            'https://i.gkd.li/i/25128396',
+          ],
+        },
+        {
+          key: 6,
+          fastQuery: true,
+          activityIds: '.MainActivity',
+          matches:
+            '@ImageView[childCount=0][clickable=true] - [text^="立即"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/25128309',
+        },
+        {
+          preKeys: [0, 1, 2, 3, 4, 5, 6],
           fastQuery: true,
           activityIds: '.MainActivity',
           matches: '@[clickable=true] >2 [text="不感兴趣"][visibleToUser=true]',
@@ -275,6 +328,7 @@ export default defineGkdApp({
       name: '局部广告',
       rules: [
         {
+          key: 0,
           fastQuery: true,
           activityIds: '.MainActivity',
           matches:

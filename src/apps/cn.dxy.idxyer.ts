@@ -41,6 +41,15 @@ export default defineGkdApp({
             'https://i.gkd.li/i/24852398',
           ],
         },
+        {
+          key: 1,
+          name: '内容对你有帮助吗-反馈页面',
+          activityIds:
+            'cn.dxy.drugscomm.business.medadviser.detail.MedAdviserDetailComposeActivity',
+          matches:
+            '[text*="有帮助吗"] + [text*="参与反馈"] +n ImageView[clickable=true][width<100 && height<100]',
+          snapshotUrls: 'https://i.gkd.li/i/24995535',
+        },
       ],
     },
     {
@@ -95,6 +104,7 @@ export default defineGkdApp({
             '.biz.post.PostDetailActivity',
             '.biz.post.CommentDetailActivity',
           ],
+          action: 'clickCenter',
           matches: [
             '@Button[text=" 查看答案"][clickable=true][visibleToUser=true]',
           ],
